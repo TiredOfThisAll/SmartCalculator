@@ -4,14 +4,17 @@ class MathFunctions:
         i = 0
         n = 0
         while "/" in expr_list or "*" in expr_list:
-            if expr_list[i] == "/" and expr_list[i + 1] == "-" and \
-                    float(expr_list[i+2] != 0):
-                expr_list[i - 1] = str(-1 * (float(expr_list[i - 1]) /
-                                             float(expr_list[i + 2])))
-                del (expr_list[i])
-                del (expr_list[i])
-                del (expr_list[i])
-                i -= 3
+            if expr_list[i] == "/" and expr_list[i + 1] == "-":
+                if float(expr_list[i+2]) != 0:
+                    expr_list[i - 1] = str(-1 * (float(expr_list[i - 1]) /
+                                                 float(expr_list[i + 2])))
+                    del (expr_list[i])
+                    del (expr_list[i])
+                    del (expr_list[i])
+                    i -= 3
+                else:
+                    print("Division by zero!")
+                    return
             elif expr_list[i] == "*" and expr_list[i + 1] == "-":
                 expr_list[i - 1] = str(-1 * (float(expr_list[i - 1]) *
                                              float(expr_list[i + 2])))
@@ -19,20 +22,19 @@ class MathFunctions:
                 del (expr_list[i])
                 del (expr_list[i])
                 i -= 3
-            elif expr_list[i] == "/" and expr_list[i + 1] == "-" and \
-                    float(expr_list[i + 2] == 0):
-                print("Division by zero!")
-                return
-            elif expr_list[i] == "/" and float(expr_list[i + 1]) != 0:
-                expr_list[i-1] = str(float(expr_list[i-1]) / float(expr_list[i+1]))
-                del (expr_list[i])
-                del (expr_list[i])
-                i -= 2
-            elif expr_list[i] == "/" and float(expr_list[i + 1]) == 0:
-                print("Division by zero!")
-                return
-            elif expr_list[i] == "*" and expr_list[i + 1].isnumeric():
-                expr_list[i-1] = str(float(expr_list[i-1]) * float(expr_list[i+1]))
+            elif expr_list[i] == "/":
+                if float(expr_list[i + 1]) != 0:
+                    expr_list[i-1] = str(float(expr_list[i-1]) /
+                                         float(expr_list[i+1]))
+                    del (expr_list[i])
+                    del (expr_list[i])
+                    i -= 2
+                else:
+                    print("Division by zero!")
+                    return
+            elif expr_list[i] == "*" and expr_list[i + 1]:
+                expr_list[i-1] = str(float(expr_list[i-1]) *
+                                     float(expr_list[i+1]))
                 del (expr_list[i])
                 del (expr_list[i])
                 i -= 2

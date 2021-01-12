@@ -32,11 +32,12 @@ class StringFormatting:
             if expr[i] in operand_string:
                 n += 1
         i = 0
-        while i <= n * 3:
+        while n != 0:
             if expr[i] in operand_string:
                 expr.insert(i + 1, " ")
                 expr.insert(i, " ")
                 i += 2
+                n -= 1
                 continue
             i += 1
         return "".join(expr)

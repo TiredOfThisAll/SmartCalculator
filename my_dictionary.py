@@ -8,11 +8,12 @@ operand_string = "+-/*^"
 
 
 def add_variable_to_dictionary(expression):
+    pattern = "(\d+)(.(\d+))?"
     expr = expression.split()
     if not expr[0].isalpha():
         print("Invalid identifier")
         return
-    elif not expr[2].isalpha() and not expr[2].isnumeric():
+    elif not expr[2].isalpha() and not re.search(pattern, expr[2]):
         print("Invalid assignment")
         return
     elif len(expr) > 3:

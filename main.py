@@ -6,7 +6,7 @@ HELP_MESSAGE = """Type your expression in the next format:
               x + y * ( c + ( s + z ) ) 
               Calculator supports addition, subtraction, multiplication, 
               division, alphabetic variables and brackets 
-              To use alphabetic variables you should type 'variable' = 'symbol' 
+              To use alphabetic variables you should type 'variable' = 'value' 
               -> then you can use your variable in the expression 
               The variable name must be written in English with a lowercase 
               letter 

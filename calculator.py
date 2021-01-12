@@ -29,13 +29,17 @@ def calculate(expression):
         expr = math_functions.power(expr)
         expr = StringFormatting.space_inserter(expr)
         expr = math_functions.div_and_mul(expr)
+        if expr is None:
+            return
         expr = math_functions.plus_and_minus(expr)
         return expr
-    if "/" in expr or "*" in expr and "+" not in expr and "-" not in expr:
+    if ("/" in expr or "*" in expr) and ("+" not in expr and "-" not in expr):
         expr = math_functions.div_and_mul(expr)
         return expr
     if ("/" in expr or "*" in expr) and ("+" in expr or "-" in expr):
         expr = math_functions.div_and_mul(expr)
+        if expr is None:
+            return
         expr = math_functions.plus_and_minus(expr)
         return expr
     if "+" in expr or "-" in expr:
